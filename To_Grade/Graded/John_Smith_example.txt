@@ -1,7 +1,10 @@
+Name: John_Smith_example's assignment
+Date/Time: 2023-03-30 01:53:42.823038
+
 ============================= test session starts =============================
-platform win32 -- Python 3.10.7, pytest-7.2.2, pluggy-1.0.0 -- C:\Program Files\Python310\python.exe
+platform win32 -- Python 3.10.5, pytest-7.1.3, pluggy-1.0.0 -- C:\Users\evan\AppData\Local\Programs\Python\Python310\python.exe
 cachedir: .pytest_cache
-rootdir: C:\Users\Evan\Desktop\github\Autograding\To_Grade
+rootdir: C:\Users\evan\Desktop\Autograder\Autograder\To_Grade
 collecting ... collected 2 items
 
 test.py::test_module FAILED                                              [ 50%]
@@ -42,4 +45,4 @@ test.py:25: AssertionError
 =========================== short test summary info ===========================
 FAILED test.py::test_module - AssertionError: assert '' == '1\n2\n3'
 FAILED test.py::test_function - AssertionError: No 'my_fun' function found
-============================== 2 failed in 0.07s ==============================
+============================== 2 failed in 0.11s ==============================
