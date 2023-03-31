@@ -1,4 +1,11 @@
 print(1)
 
-def my_fun():
+
+def print_fun():
   print("Hello World")
+
+def return_fun():
+  return("Hello World")
+
+def add_example(x,y):
+  return x + y 

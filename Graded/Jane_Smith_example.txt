@@ -1,0 +1,42 @@
+Name: Jane_Smith_example's assignment
+Date/Time: 2023-03-30 20:45:19.881031
+
+============================= test session starts =============================
+platform win32 -- Python 3.10.5, pytest-7.1.3, pluggy-1.0.0 -- C:\Users\evan\AppData\Local\Programs\Python\Python310\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\evan\Desktop\Autograder\Autograder
+collecting ... collected 3 items
+
+To_Grade/_test.py::test_module_output FAILED                             [ 33%]
+To_Grade/_test.py::test_function_output PASSED                           [ 66%]
+To_Grade/_test.py::test_function_return PASSED                           [100%]
+
+================================== FAILURES ===================================
+_____________________________ test_module_output ______________________________
+
+    def test_module_output():
+    
+      file_name =os.path.join(dir_path,f"{module_name}.py")
+    
+    
+      expected_output = os.path.join(dir_path,expected_output_file) #used to store the output to check against
+      #expect_output = "Output Place Holder" #used with short outputs
+    
+      result = subprocess.run(["python", file_name], stdout=subprocess.PIPE,stderr = subprocess.PIPE, text = True)
+    
+      with open(expected_output, "r") as f:
+        expected = f.read()
+    
+    #ignore above ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    #assertions===========================================================================================================================================
+>     assert result.stdout.strip() == expected.strip()
+E     AssertionError: assert '1' == '1\n2\n3'
+E       + 1
+E       - 1
+E       - 2
+E       - 3
+
+To_Grade\_test.py:29: AssertionError
+=========================== short test summary info ===========================
+FAILED To_Grade/_test.py::test_module_output - AssertionError: assert '1' == ...
+========================= 1 failed, 2 passed in 0.12s =========================

@@ -2,10 +2,19 @@ import subprocess
 import os,time
 import datetime
 
+dir_path = os.path.dirname(os.path.abspath(__file__))
+
+
+graded_dir = os.path.join(dir_path, "Graded")
+to_grade_dir = os.path.join(dir_path,"To_Grade")
+tests_dir = to_grade_dir
+
+test_file = "_test.py"
+generic_test_file = "_generic_test.py"
 
 def create_test_file(module_name):
-  dir_path = os.path.dirname(os.path.abspath(__file__))
-  file_name = os.path.join(dir_path,"test.py") 
+  
+  file_name = os.path.join(tests_dir,test_file) 
   with open(file_name, "r") as f:
     content = f.read()
 
@@ -15,21 +24,21 @@ def create_test_file(module_name):
     f.write(test_content)
 
 def rewrite_test_file():
-  dir_path = os.path.dirname(os.path.abspath(__file__))
-  file_name = os.path.join(dir_path,"backup_test.py") 
+  
+  file_name = os.path.join(tests_dir,generic_test_file) 
   
   with open(file_name,"r") as f:
     content = f.read()
 
-  file_name = os.path.join(dir_path,"test.py")
+  file_name = os.path.join(tests_dir,test_file)
   with open(file_name,"w") as f:
     f.write(content)
 
 
 
 modules = []
-for filename in os.listdir():
-  if filename.endswith('.py') and filename != 'test.py' and filename != "main.py" and filename != "backup_test.py":
+for filename in os.listdir(to_grade_dir):
+  if filename.endswith('.py') and filename != test_file and filename != generic_test_file :
     module_name = os.path.splitext(filename)[0]
     modules.append(module_name)
 
@@ -38,18 +47,19 @@ for i,module in enumerate(modules):
   create_test_file(module)
    
   # The command to run
-  dir_path = os.path.dirname(os.path.abspath(__file__))
-  file_name = os.path.join(dir_path,"test.py") 
-  output_file = os.path.join(dir_path, "Graded",f"{module}.txt")
+  file_name = os.path.join(tests_dir,test_file) 
+  output_file = os.path.join(graded_dir,f"{module}.txt")
   
-  command = f"pytest -v  {file_name} > {output_file}"
+  #commands
+  #command = f"pytest -vv {file_name} > {output_file}" #max verbosity
+  command = f"pytest -vv --continue-on-collection-errors {file_name} > {output_file}" #continue even when assertions fail
 
   # Run the command
-  print(f"====Running command====\n{command}")
+  print(f"====Running Tests on {module} ====\n{command}")
   # result = subprocess.run(command, shell=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
   process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE,stderr = subprocess.PIPE,text = True)
   stdout, stderr = process.communicate()
-  print("====Command Completed====")
+  print(f"====Testing Completed on {module}====\n")
   
   #Wait
   time.sleep(1)

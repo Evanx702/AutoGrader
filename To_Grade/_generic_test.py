@@ -8,6 +8,7 @@ module_name = "__MODULE_NAME__"#ignore error (used as place holder")
 
 dir_path = os.path.dirname(os.path.abspath(__file__))
 
+expected_output_file = "_expected_output.txt"
 
 #tests the output of the module(file) not contained in a function definition
 def test_module_output():
@@ -15,7 +16,7 @@ def test_module_output():
   file_name =os.path.join(dir_path,f"{module_name}.py") 
   
 
-  expected_output = os.path.join(dir_path, "expected_output.txt") #used to store the output to check against
+  expected_output = os.path.join(dir_path,expected_output_file) #used to store the output to check against
   #expect_output = "Output Place Holder" #used with short outputs
 
   result = subprocess.run(["python", file_name], stdout=subprocess.PIPE,stderr = subprocess.PIPE, text = True)
@@ -35,7 +36,7 @@ def test_function_output():
 
   #test printed output of a function
 
-  #expected_output = os.path.join(dir_path, "expected_output.txt") #used to store the output to check against
+  #expected_output = os.path.join(dir_path, expected_output_file) #used to store the output to check against
   expected_output = "Hello World" #used with short outputs 
   #NOTE: expected output should include any newline characters \n
 
