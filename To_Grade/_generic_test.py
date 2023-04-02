@@ -5,7 +5,6 @@ import io,sys
 import __MODULE_NAME__ as module #ignore error (used as place holder")
 
 module_name = "__MODULE_NAME__"#ignore error (used as place holder")
-
 dir_path = os.path.dirname(os.path.abspath(__file__))
 
 expected_output_file = "_expected_output.txt"

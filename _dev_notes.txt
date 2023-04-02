@@ -1,0 +1,22 @@
+
+
+'''
+Development Notes
+  have main.py take the test file as an argument
+  have the generic test file accept a module name as an argument
+  Generate a name for test.py that isn't used in the same directory
+  make a template.py file that contains whater is needed for all test files (like module name support)
+
+  accepting command line arguments
+  using the sys module  sys.argv[1] = first arguement  sys.argv[0] = file name
+  
+'''
+'''
+  Add
+    Read through the .py file and check for expected strings
+    Write a current assignment and the test for it.
+    Clean_up the report file to be more easily read (students/other users)
+    Write a test file for each assignment that students can use to help individualize thier learning 
+      ? how to serve this up to them
+    Auto generate student files with thier name and the test file. 
+'''

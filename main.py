@@ -3,14 +3,12 @@ import os,time
 import datetime
 
 dir_path = os.path.dirname(os.path.abspath(__file__))
-
-
 graded_dir = os.path.join(dir_path, "Graded")
 to_grade_dir = os.path.join(dir_path,"To_Grade")
 tests_dir = to_grade_dir
-
 test_file = "_test.py"
 generic_test_file = "_generic_test.py"
+
 
 def create_test_file(module_name):
   
@@ -33,8 +31,6 @@ def rewrite_test_file():
   file_name = os.path.join(tests_dir,test_file)
   with open(file_name,"w") as f:
     f.write(content)
-
-
 
 modules = []
 for filename in os.listdir(to_grade_dir):
